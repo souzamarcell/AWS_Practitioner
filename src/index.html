@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz</h1>
+        <div id="quiz-container"></div>
+        <button id="submit">Verificar</button>
+        <p id="result"></p>
+        <button id="logout">Sair</button>
+    </div>
+
+    <script src="quiz.js"></script>
+    <script>
+        // Aguarda o carregamento completo da página antes de verificar o login
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const isLoggedIn = sessionStorage.getItem("loggedIn");
+                console.log("🔍 Verificando login no sessionStorage:", isLoggedIn);
+
+                if (!isLoggedIn || isLoggedIn !== "true") {
+                    console.log("⛔ Usuário não autenticado. Redirecionando...");
+                    window.location.href = "login.html";
+                }
+            }, 500);
+
+        });
+
+
+        // Botão de logout
+        document.getElementById("logout").addEventListener("click", function () {
+            console.log("🚪 Realizando logout...");
+            localStorage.removeItem("loggedIn"); // Remove apenas a autenticação, sem limpar outros dados
+            console.log("🔍 Valor após logout:", localStorage.getItem("loggedIn")); // Debug no console
+
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 200);
+        });
+    </script>
+</body>
+</html>
