@@ -5,17 +5,29 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
   const password = document.getElementById("password").value;
   const errorMessage = document.getElementById("errorMessage");
 
-  const validUser = "admin";
-  const validPass = "1234";
+  // 🔹 Lista de usuários válidos
+  const users = [
+      { username: "admin", password: "1234", role: "admin" },
+      { username: "marcell", password: "JesusSalvador#12", role: "admin" },
+      { username: "hadassa", password: "431", role: "user" },
+      { username: "guest", password: "0000", role: "guest" }
+  ];
 
-  if (username === validUser && password === validPass) {
-    sessionStorage.setItem("loggedIn", "true");
-    console.log("✅ Login realizado. Valor salvo no sessionStorage:", sessionStorage.getItem("loggedIn"));
+  // 🔹 Verifica se o usuário e senha estão corretos
+  const validUser = users.find(user => user.username === username && user.password === password);
 
+  if (validUser) {
+      sessionStorage.setItem("loggedIn", "true");
+      sessionStorage.setItem("username", validUser.username);
+      sessionStorage.setItem("role", validUser.role); // Salva o tipo de usuário
+
+      console.log("✅ Login realizado como:", validUser.username, "| Role:", validUser.role);
+
+      // 🔹 Redireciona para index.html
       setTimeout(() => {
           window.location.href = "index.html";
       }, 300);
   } else {
-      errorMessage.innerText = "Usuário ou senha incorretos!";
+      errorMessage.innerText = "⚠️ Usuário ou senha incorretos!";
   }
 });
