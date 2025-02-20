@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="quiz-container"></div>
+        <button id="submit">Verificar</button>
+        <p id="result"></p>
+        <button id="logout">Sair</button>
+    </div>
+
+    <script>
+        // Bloquear acesso se não estiver logado
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const username = sessionStorage.getItem("username");
+                if (!sessionStorage.getItem("loggedIn")) {
+                    window.location.href = "login.html";
+                } else {
+                    document.getElementById("welcome-message").textContent = `Bem vindo, ${username}!`;
+                }
+            }, 500);
+        });
+
+        // Botão de logout
+        document.getElementById("logout").addEventListener("click", function () {
+            sessionStorage.clear();
+            window.location.href = "login.html";
+        });
+    </script>
+
+    <!-- 🔹 Verifica se é admin e carrega o quiz correto -->
+    <script>
+        const username = sessionStorage.getItem("username");
+
+        if (username && username.toLowerCase() === "admin") {
+            document.write('<script src="questions-aws-01.js"><\/script>');
+            document.write('<script src="quiz.js"><\/script>');
+        } else if (username && username.toLowerCase() === "marcell") {
+            document.write('<script src="311-aws-01.js"><\/script>');
+            document.write('<script src="311-aws-02.js"><\/script>');
+            document.write('<script src="311-aws-03.js"><\/script>');
+            document.write('<script src="311-quiz.js"><\/script>');
+        } else if (username && username.toLowerCase() === "hadassa") {
+            document.write('<script src="questions-aws-01.js"><\/script>');
+            document.write('<script src="questions-aws-02.js"><\/script>');
+            document.write('<script src="questions-aws-03.js"><\/script>');
+            document.write('<script src="431-quiz.js"><\/script>');
+        } else {
+            document.write('<script src="quiz-admin.js"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

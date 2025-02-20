@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Exibir o menu de seleção antes de começar o quiz
     function showMenu() {
         quizContainer.innerHTML = `
+            <h2>AWS-Certified-Cloud-Practitioner</h2>
+            <p id="welcome-message"></p> <!-- Mostra o nome do usuário -->
             <h2>Select a Question Set:</h2>
             <button onclick="startQuiz(window.questions1)">Quiz 1</button>
             <button onclick="startQuiz(window.questions2)">Quiz 2</button>
