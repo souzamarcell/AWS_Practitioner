@@ -1,56 +1,130 @@
-const questions = [
-  {
-      id: "q1",
-      text: "Qual é a capital da França?",
-      options: ["Londres", "Paris", "Berlim", "Madri"],
-      correct: "Paris"
-  },
-  {
-      id: "q2",
-      text: "Quanto é 5 + 3?",
-      options: ["5", "8", "10", "7"],
-      correct: "8"
-  },
-  {
-      id: "q3",
-      text: "Qual é a cor do céu em um dia claro?",
-      options: ["Verde", "Azul", "Vermelho", "Amarelo"],
-      correct: "Azul"
+document.addEventListener("DOMContentLoaded", () => {
+  const quizContainer = document.getElementById("quiz-container");
+  const submitButton = document.getElementById("submit");
+  const resultText = document.getElementById("result");
+
+  let currentQuestionIndex = 0;
+  let correctCount = 0;
+  let wrongCount = 0;
+  let selectedAnswer = null;
+
+  // Lista de perguntas (AGORA SERÁ EMBARALHADA)
+  let questions = [
+      {
+          id: "q1",
+          text: "Which AWS storage class should be used for long-term archiving?",
+          options: ["Glacier", "Long-Term", "Standard", "Infrequent Access"],
+          correct: "Glacier",
+      },
+      {
+          id: "q2",
+          text: "What does S3 stand for?",
+          options: [
+              "Simple Storage Service",
+              "Simplified Storage Service",
+              "Simple Store Service",
+              "Service for Simple Storage",
+          ],
+          correct: "Simple Storage Service",
+      },
+      {
+          id: "q3",
+          text: "Which service provides auto-scaling in AWS?",
+          options: ["EC2", "Auto Scaling", "S3", "Lambda"],
+          correct: "Auto Scaling",
+      },
+  ];
+
+  // Função para embaralhar um array
+  function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
   }
-];
 
-const quizContainer = document.getElementById("quiz-container");
-const submitButton = document.getElementById("submit");
-const resultDisplay = document.getElementById("result");
+  // EMBARALHA AS PERGUNTAS UMA VEZ NO INÍCIO
+  questions = shuffleArray(questions);
 
-// Gerar perguntas no HTML
-questions.forEach((q) => {
-  const questionDiv = document.createElement("div");
-  questionDiv.classList.add("question");
+  // Função para exibir a pergunta atual
+  function showQuestion() {
+      quizContainer.innerHTML = ""; // Limpa o conteúdo anterior
+      resultText.textContent = ""; // Reseta o feedback
 
-  const questionText = document.createElement("p");
-  questionText.innerText = q.text;
-  questionDiv.appendChild(questionText);
+      if (currentQuestionIndex >= questions.length) {
+          // Final do quiz
+          quizContainer.innerHTML = `
+              <h2>🎉 Quiz Finished!</h2>
+              <p>✅ Correct answers: <b>${correctCount}</b></p>
+              <p>❌ Wrong answers: <b>${wrongCount}</b></p>
+              <button onclick="restartQuiz()">Try Again</button>
+          `;
+          submitButton.style.display = "none"; // Esconde o botão de verificar
+          return;
+      }
 
-  q.options.forEach((option) => {
-      const label = document.createElement("label");
-      label.innerHTML = `<input type="radio" name="${q.id}" value="${option}"> ${option}`;
-      questionDiv.appendChild(label);
-  });
+      const question = questions[currentQuestionIndex];
 
-  quizContainer.appendChild(questionDiv);
-});
+      // Cria a pergunta
+      const questionElement = document.createElement("h3");
+      questionElement.textContent = `Question ${currentQuestionIndex + 1}: ${question.text}`;
+      quizContainer.appendChild(questionElement);
 
-// Verificar respostas
-submitButton.addEventListener("click", () => {
-  let score = 0;
-  questions.forEach((q) => {
-      const selectedOption = document.querySelector(`input[name="${q.id}"]:checked`);
-      if (selectedOption && selectedOption.value === q.correct) {
-          score++;
+      // Embaralhar as alternativas
+      const shuffledOptions = shuffleArray([...question.options]);
+
+      // Criar opções de resposta
+      shuffledOptions.forEach((option) => {
+          const label = document.createElement("label");
+          label.classList.add("option-label");
+          label.innerHTML = `
+              <input type="radio" name="quiz" value="${option}">
+              ${option}
+          `;
+          quizContainer.appendChild(label);
+      });
+
+      selectedAnswer = null; // Resetar a resposta selecionada
+  }
+
+  // Captura a resposta selecionada
+  quizContainer.addEventListener("change", (event) => {
+      if (event.target.name === "quiz") {
+          selectedAnswer = event.target.value;
       }
   });
 
-  resultDisplay.innerText = `Você acertou ${score} de ${questions.length} perguntas!`;
+  // Verifica a resposta e avança para a próxima questão
+  submitButton.addEventListener("click", () => {
+      if (!selectedAnswer) {
+          resultText.textContent = "⚠️ Please select an answer!";
+          return;
+      }
+
+      const question = questions[currentQuestionIndex];
+
+      if (selectedAnswer === question.correct) {
+          resultText.innerHTML = "✅ Correct!";
+          correctCount++;
+      } else {
+          resultText.innerHTML = `❌ Wrong! The correct answer is: <b>${question.correct}</b>`;
+          wrongCount++;
+      }
+
+      // Avança para a próxima pergunta após 2 segundos
+      setTimeout(() => {
+          currentQuestionIndex++;
+          showQuestion();
+      }, 2000);
+  });
+
+  // Reiniciar o quiz
+  window.restartQuiz = function () {
+      currentQuestionIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      submitButton.style.display = "block"; // Exibe o botão de verificar novamente
+      questions = shuffleArray(questions); // EMBARALHA NOVAMENTE AO REINICIAR
+      showQuestion();
+  };
+
+  // Inicia o quiz
+  showQuestion();
 });
-  
