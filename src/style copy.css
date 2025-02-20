@@ -1,16 +1,12 @@
-/* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
-/* Container principal */
 .container {
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   margin: 50px auto;
   background: white;
   padding: 20px;
@@ -18,41 +14,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilização do login */
-#loginForm {
-  display: flex;
-  flex-direction: column;
-}
-
-#loginForm input {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#loginForm button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 100%;
-}
-
-#loginForm button:hover {
-  background: #0056b3;
-}
-
-#errorMessage {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-/* Estilização do quiz */
 h1 {
   color: #333;
 }
@@ -93,14 +54,4 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
-}
-
-/* Logout */
-#logout {
-  background: #dc3545;
-  margin-top: 20px;
-}
-
-#logout:hover {
-  background: #a71d2a;
 }

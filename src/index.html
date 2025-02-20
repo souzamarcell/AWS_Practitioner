@@ -17,30 +17,20 @@
 
     <script src="quiz.js"></script>
     <script>
-        // Aguarda o carregamento completo da página antes de verificar o login
+        // Bloquear acesso se não estiver logado
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 const isLoggedIn = sessionStorage.getItem("loggedIn");
-                console.log("🔍 Verificando login no sessionStorage:", isLoggedIn);
-
                 if (!isLoggedIn || isLoggedIn !== "true") {
-                    console.log("⛔ Usuário não autenticado. Redirecionando...");
                     window.location.href = "login.html";
                 }
             }, 500);
-
         });
-
 
         // Botão de logout
         document.getElementById("logout").addEventListener("click", function () {
-            console.log("🚪 Realizando logout...");
-            localStorage.removeItem("loggedIn"); // Remove apenas a autenticação, sem limpar outros dados
-            console.log("🔍 Valor após logout:", localStorage.getItem("loggedIn")); // Debug no console
-
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 200);
+            sessionStorage.removeItem("loggedIn");
+            window.location.href = "login.html";
         });
     </script>
 </body>
