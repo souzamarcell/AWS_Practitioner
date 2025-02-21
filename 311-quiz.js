@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <button onclick="startQuiz(window.questions1)">Quiz 1</button>
             <button onclick="startQuiz(window.questions2)">Quiz 2</button>
             <button onclick="startQuiz(window.questions3)">Quiz 3</button>
+            <button onclick="startQuiz(window.questions4)">Quiz 4</button>
+            <button onclick="startQuiz(window.questions5)">Quiz 5</button>
+            <button onclick="startQuiz(window.questions6)">Quiz 6</button>
         `;
         submitButton.style.display = "none";
         nextButton.style.display = "none";

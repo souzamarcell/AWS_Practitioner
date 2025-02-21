@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <button onclick="startQuiz(window.questions1)">Quiz 1</button>
             <button onclick="startQuiz(window.questions2)">Quiz 2</button>
             <button onclick="startQuiz(window.questions3)">Quiz 3</button>
+           
         `;
         submitButton.style.display = "none"; // Esconde o botão até o quiz começar
     }
