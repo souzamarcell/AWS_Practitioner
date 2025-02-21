@@ -70,6 +70,53 @@ window.questions6 = [
         ],
         correct: ["None of the above"],
         explanation: "TCO stands for Total Cost of Ownership."
+    },
+    {
+        id: "q57",
+        text: "Which AWS service is designed to provide scalable and cost-effective data warehousing solutions?",
+        options: [
+            "Amazon Aurora",
+            "Amazon Redshift",
+            "Amazon RDS",
+            "Amazon DynamoDB"
+        ],
+        correct: ["Amazon Redshift"],
+        explanation: "Amazon Redshift is a fully managed data warehousing service designed for fast and scalable data analysis."
+    },
+    {
+        id: "q58",
+        text: "What is a key benefit of using AWS Lambda over traditional EC2 instances for running application code?",
+        options: [
+            "Lambda allows users to choose the operating system for their functions",
+            "Lambda requires manual scaling to handle increased workloads",
+            "Lambda eliminates the need for provisioning and managing servers",
+            "Lambda is only available in a single AWS region"
+        ],
+        correct: ["Lambda eliminates the need for provisioning and managing servers"],
+        explanation: "AWS Lambda is a serverless computing service that automatically scales and executes code in response to events, eliminating the need to manage infrastructure."
+    },
+    {
+        id: "q59",
+        text: "Which AWS service enables centralized management of user access and permissions across multiple AWS accounts?",
+        options: [
+            "AWS IAM",
+            "AWS Organizations",
+            "AWS KMS",
+            "AWS Shield"
+        ],
+        correct: ["AWS Organizations"],
+        explanation: "AWS Organizations allows administrators to manage policies, permissions, and billing across multiple AWS accounts from a single management console."
+    },
+    {
+        id: "q60",
+        text: "Which of the following services is best suited for real-time processing of streaming data in AWS?",
+        options: [
+            "AWS Kinesis",
+            "Amazon S3",
+            "AWS Snowball",
+            "Amazon RDS"
+        ],
+        correct: ["AWS Kinesis"],
+        explanation: "Amazon Kinesis is designed for real-time processing of streaming data, allowing applications to analyze and act on data as it is received."
     }
-  ];
-  
+];
