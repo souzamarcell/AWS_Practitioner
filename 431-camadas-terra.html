@@ -8,8 +8,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- <h1>Quiz</h1> -->
-        <p id="welcome-message"></p> <!-- Mostra o nome do usuário -->
         <div id="quiz-container"></div>
         <button id="submit">Verificar</button>
         <p id="result"></p>
@@ -37,26 +35,26 @@
     </script>
 
     <!-- 🔹 Verifica se é admin e carrega o quiz correto -->
-    <!-- <script>
+    <script>
         const username = sessionStorage.getItem("username");
 
         if (username && username.toLowerCase() === "admin") {
             document.write('<script src="questions-aws-01.js"><\/script>');
             document.write('<script src="quiz.js"><\/script>');
-        } else if (username && username.toLowerCase() === "marcell") {
-            document.write('<script src="311-aws-01.js"><\/script>');
-            document.write('<script src="311-aws-02.js"><\/script>');
-            document.write('<script src="311-aws-03.js"><\/script>');
-            document.write('<script src="311-quiz.js"><\/script>');
         } else if (username && username.toLowerCase() === "hadassa") {
-            document.write('<script src="questions-aws-01.js"><\/script>');
-            document.write('<script src="questions-aws-02.js"><\/script>');
-            document.write('<script src="questions-aws-03.js"><\/script>');
-            document.write('<script src="431-quiz.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-01.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-02.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-03.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-04.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-05.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-06.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-07.js"><\/script>');
+            document.write('<script src="camadas-terra/431-camadas-08.js"><\/script>');
+            document.write('<script src="camadas-terra/431-quiz.js"><\/script>');
         } else {
             document.write('<script src="quiz-admin.js"><\/script>');
         }
-    </script> -->
+    </script>
 
 </body>
 </html>
