@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Define um tempo para avançar automaticamente
         autoNextTimeout = setTimeout(() => {
             nextQuestion();
-        }, 15000); // Avança em 15 segundos se o usuário não apertar o botão
+        }, 20000); // Avança em 20 segundos se o usuário não apertar o botão
     });
 
     function nextQuestion() {
