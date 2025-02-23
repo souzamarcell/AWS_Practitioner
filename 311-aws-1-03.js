@@ -1,5 +1,3 @@
-// Arquivo separado contendo os grupos de perguntas
-
 window.questions3 = [
     {
         id: "q21",
