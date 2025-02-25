@@ -26,18 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Exibir o menu de seleção antes de começar o quiz
     function showMenu() {
+        // <h2>6° Ano - Disciplinas</h2>
         quizContainer.innerHTML = `
-            <h2>AWS-Certified-Cloud-Practitioner</h2>
             <p id="welcome-message"></p> <!-- Mostra o nome do usuário -->
-            <h2>Select a Question Set:</h2>
-            <button onclick="startQuiz(window.questions1)">Quiz 1</button>
-            <button onclick="startQuiz(window.questions2)">Quiz 2</button>           
-            <button onclick="startQuiz(window.questions3)">Quiz 3</button>           
-            <button onclick="startQuiz(window.questions4)">Quiz 4</button>           
-            <button onclick="startQuiz(window.questions4)">Quiz 5</button>           
-            <button onclick="startQuiz(window.questions4)">Quiz 6</button>           
-            <button onclick="startQuiz(window.questions4)">Quiz 7</button>           
-            <button onclick="startQuiz(window.questions4)">Quiz 8</button>           
+            <h2>Selecione um grupo de 10 questões:</h2>
+            <button onclick="startQuiz(window.questions1)">Questões 01</button>
+            <button onclick="startQuiz(window.questions2)">questões 02</button>           
+            <button onclick="startQuiz(window.questions3)">questões 03</button>           
+            <button onclick="startQuiz(window.questions4)">questões 04</button>           
+            <button onclick="startQuiz(window.questions4)">questões 05</button>           
+            <button onclick="startQuiz(window.questions4)">questões 06</button>           
+            <button onclick="startQuiz(window.questions4)">questões 07</button>           
+            <button onclick="startQuiz(window.questions4)">questões 08</button>           
         `;
         submitButton.style.display = "none";
         nextButton.style.display = "none";
